@@ -13,15 +13,16 @@ import manager.service.KnowledgeUpLoadService;
 import manager.service.ThinkService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by zhangheng on 2017/3/3.
@@ -54,6 +55,18 @@ public class KnowledgeController extends BaseController{
     @ResponseBody
     public void source(HttpServletResponse httpServletResponse, HttpServletRequest request,@RequestParam String title,
                        @RequestParam String content,@RequestParam String knowledgetype) throws IOException {
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+        if (commonsMultipartResolver.isMultipart(request)){
+            MultipartHttpServletRequest httpServletRequest = (MultipartHttpServletRequest) request;
+            Iterator iterable = httpServletRequest.getFileNames();
+            while (iterable.hasNext()){
+                MultipartFile file = httpServletRequest.getFile(iterable.next().toString());
+                if (file!=null){
+                    String path="G:/Develop/IDE/Ohgood/src/main/webapp/WEB-INF/upload/"+file.getOriginalFilename();
+                    file.transferTo(new File(path));
+                }
+            }
+        }
 
         Knowledge knowledge = new Knowledge(UUID.randomUUID().toString(),title,content, MainConstant.KNOWLEDGE_SOURCE,knowledgetype);
         User user = (User) request.getSession().getAttribute("CurrentUser");

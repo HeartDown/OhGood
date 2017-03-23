@@ -74,10 +74,13 @@
                 }
             },
             submitHandler : function(form) {
+                var formData = new FormData($("#validationFrom")[0])
                 $.ajax({
                     dataType : "json",
                     url : getContextPath() + "/uploadknowledge",
                     type : "post",
+                    contentType: false,
+                    processData: false,
                     data : {
                         title : $('#title').val(),
                         content : $('#content').val(),
@@ -110,7 +113,7 @@
     List<KnowledgeType> list = (List<KnowledgeType>) httpSession.getAttribute("knowledgetype");
     Iterator<KnowledgeType> iterators = list.iterator();
 %>
-<form class="form-horizontal" action="#" method="post" id="validationFrom">
+<form class="form-horizontal" action="#" method="post" id="validationFrom" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title" class="col-sm-2 control-label" >title</label>
         <div class="col-sm-10">
@@ -136,6 +139,18 @@
                 <%=k.getTypename()%>
             </label>
             <% }%>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="type-div" class="col-sm-2 control-label">图片</label>
+        <div class="col-sm-10">
+            <input id="img" name="uploadimg" type="file">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="type-div" class="col-sm-2 control-label">知识附件</label>
+        <div class="col-sm-10">
+            <input id="fujian" name="uploadfujian" type="file">
         </div>
     </div>
     <div class="form-group">
