@@ -103,7 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
     <div class="content">
         <!-- 左侧知识内容显示 -->
-        <div class="col-md-7 content">
+        <div class="col-md-7 content" style="width: 100%">
             <%
                 Iterator<KnowledgeType> iterator2 = list.iterator();
                 if (curtype!=null){
@@ -114,9 +114,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             %>
             <div class="article">
                 <h5 class="head"><%=null!=curtype.getTypename()? curtype.getTypename():"其他"%></h5>
-                <a class="title" href="/knowledge/think?title=<%=knowledge.getTitle()%>"><%=knowledge.getTitle()%></a>
+                <a class="title" style="height:80px;font-size:4em" href="/knowledge/think?title=<%=knowledge.getTitle()%>">title:<%=knowledge.getTitle()%></a>
                 <a href="single.html"><img src="${staticPath}/static/img/images/<%=knowledge.getImgpath()%>" alt="" /></a>
-                <p><%=knowledge.getContent()%></p>
+                <p style="height:80px;font-size:2em">content:<%=knowledge.getContent()%></p>
                 <p></p>
             </div>
             <%}}}
@@ -130,9 +130,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             %>
             <div class="article">
                 <h5 class="head"><%=null!=knowledgeType.getTypename()? knowledgeType.getTypename():"其他"%></h5>
-                <a class="title" href="/knowledge/think?title=<%=knowledge.getTitle()%>"><%=knowledge.getTitle()%></a>
+                <a class="title" style="height:80px;font-size:4em" href="/knowledge/think?title=<%=knowledge.getTitle()%>">title:<%=knowledge.getTitle()%></a>
                 <a href="single.html"><img src="${staticPath}/static/img/images/<%=knowledge.getImgpath()%>" alt="" /></a>
-                <p><%=knowledge.getContent()%></p>
+                <p style="height:80px;font-size:2em">content:<%=knowledge.getContent()%></p>
                 <p></p>
             </div>
             <%}}}}%>

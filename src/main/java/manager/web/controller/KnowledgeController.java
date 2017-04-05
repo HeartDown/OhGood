@@ -1,6 +1,7 @@
 package manager.web.controller;
 
 import core.constant.MainConstant;
+import core.util.FileUtil;
 import core.web.controller.BaseController;
 import manager.dto.ResultCode;
 import manager.entity.Knowledge;
@@ -46,6 +47,9 @@ public class KnowledgeController extends BaseController{
         request.getSession().setAttribute("curtype",null);
         return "knowledgesource";
     }
+
+
+
     @RequestMapping("uploadknowledge")
     public String uploadknowledge(){
         return "uploadknowledge";
@@ -55,20 +59,11 @@ public class KnowledgeController extends BaseController{
     @ResponseBody
     public void source(HttpServletResponse httpServletResponse, HttpServletRequest request,@RequestParam String title,
                        @RequestParam String content,@RequestParam String knowledgetype) throws IOException {
-        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
-        if (commonsMultipartResolver.isMultipart(request)){
-            MultipartHttpServletRequest httpServletRequest = (MultipartHttpServletRequest) request;
-            Iterator iterable = httpServletRequest.getFileNames();
-            while (iterable.hasNext()){
-                MultipartFile file = httpServletRequest.getFile(iterable.next().toString());
-                if (file!=null){
-                    String path="G:/Develop/IDE/Ohgood/src/main/webapp/WEB-INF/upload/"+file.getOriginalFilename();
-                    file.transferTo(new File(path));
-                }
-            }
-        }
-
         Knowledge knowledge = new Knowledge(UUID.randomUUID().toString(),title,content, MainConstant.KNOWLEDGE_SOURCE,knowledgetype);
+        String path=MainConstant.FILE_PATH+knowledge.getTitle()+MainConstant.PDF_SUFFIX;
+        //上传文件到指定目录
+        FileUtil.transferTo(path,request);
+
         User user = (User) request.getSession().getAttribute("CurrentUser");
         if (null == user){
             writeJSON(httpServletResponse,new ResultCode(-1,"上传失败"));

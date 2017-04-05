@@ -13,4 +13,8 @@ public final class MainConstant {
     //知识来源类型
     public static String KNOWLEDGE_SOURCE = "user";
     public static final String DP_STATIC_PATH = "Static.Path"; //系统的静态资源地址
+
+    //默认文件保存地址
+    public static final String FILE_PATH="G:/Develop/IDE/Ohgood/src/main/webapp/WEB-INF/upload/";
+    public static final String PDF_SUFFIX=".pdf";
 }

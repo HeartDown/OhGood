@@ -144,13 +144,13 @@
     <div class="form-group">
         <label for="type-div" class="col-sm-2 control-label">图片</label>
         <div class="col-sm-10">
-            <input id="img" name="upload" type="file">
+            <input id="img" name="uploadimg" type="file">
         </div>
     </div>
     <div class="form-group">
         <label for="type-div" class="col-sm-2 control-label">知识附件</label>
         <div class="col-sm-10">
-            <input id="fujian" name="upload" type="file">
+            <input id="fujian" name="uploadfujian" type="file">
         </div>
     </div>
     <div class="form-group">

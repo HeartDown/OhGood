@@ -20,7 +20,15 @@
 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
-
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 需拦截的地址 -->
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/loginUser"/>
+            <mvc:exclude-mapping path="/register"/>
+            <bean class="manager.interceptor.UserIncerceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!-- Enable Shiro Annotations for Spring-configured beans.  Only run after the lifecycleBeanProcessor has run
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>

@@ -28,6 +28,7 @@
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="${staticPath}/static/css/style.css?v=4.1.0">
+    <link href="${staticPath}/static/css/demo/style.css" rel="stylesheet" type='text/css' media="all" />
 </head>
 <body>
 <script src="${staticPath}/static/js/login.js"></script>
@@ -42,7 +43,21 @@
         });
     });
 </script>
-<div class="wrapper">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#222">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-camera"></span>
+                <span class="icon-barcode"></span>
+            </button>
+            <a class="navbar-brand" href="#">知识管理系统</a>
+        </div>
+    </div>
+</nav>
+<h1 class="w3ls">Login Knowledge System Form</h1>
+<div class="content-agileits">
 <form class="form-horizontal" id="validationLoginFrom" action="loginUser" method="post">
     <div class="form-group">
         <label class="col-sm-2 control-label">name</label>
@@ -63,8 +78,8 @@
                     <input type="checkbox" id="rememberMe" name="rememberMe"> Remember me
                 </label>
             </div>
-            <div class="col-sm-3">
-                <a class="ui-sghref" href="${ctx}/register">No user?Click me</a>
+            <div>
+                <a class="ui-sghref" href="${ctx}/register"> No  user? Click me</a>
             </div>
 
         </div>

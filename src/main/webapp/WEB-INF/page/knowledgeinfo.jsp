@@ -40,23 +40,22 @@
             <span></span>
             <img src="${staticPath}/static/img/images/${curknowledge.imgpath}" alt="image" />
         </div>
-
-        <h5>I have some word about the knowledge</h5>
-        <ul>
+        <ul style="width:500px">
             <% List<Think> list = (List<Think>) request.getAttribute("thinks");
                 if (!list.isEmpty()){
                 for (int i = 0; i < list.size(); i++) {
                     Think think = list.get(i);
             %>
-            <li><%=think.getWord()%> date:<%=think.getThinkKey().getDate()%></li>
+            <li style="font-size: 30px"><%=think.getWord()%> date:<%=think.getThinkKey().getDate()%></li>
             <%}}%>
         </ul>
+        <h5>I have some word about the knowledge</h5>
         <form action="/knowledge/think" method="post">
-            <textarea rows="3" cols="3" name="myword" id="myword"></textarea>
-            <input type="submit" id="submit_btn"/>
+            <textarea rows="3" cols="3" name="myword" id="myword" style="width: 852px; height: 86px;"></textarea>
+            <input type="submit" id="submit_btn"  value="评论"/>
         </form>
 
-        <p><a href="#">Details</a></p>
+        <p><a href="/user/pdfview?filename=${curknowledge.title}" style="font-size: 20px">Cilck me to see the pdf file</a></p>
     </div>
     <div class="cleaner"></div>
 </div> <!-- end of content -->

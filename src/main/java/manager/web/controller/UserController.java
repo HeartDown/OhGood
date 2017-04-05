@@ -1,5 +1,6 @@
 package manager.web.controller;
 
+import core.constant.MainConstant;
 import manager.entity.User;
 import manager.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,11 @@ public class UserController {
         return "admin/user/profile";
     }
 
-
+    @RequestMapping("/pdfview")
+    public String pdfview(HttpServletRequest request,@RequestParam String filename){
+        String path= MainConstant.FILE_PATH+filename+MainConstant.PDF_SUFFIX;
+        request.setAttribute("PDFPATH",path);
+        return "pdfview";
+    }
 
 }
